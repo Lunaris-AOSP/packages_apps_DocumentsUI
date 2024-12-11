@@ -20,7 +20,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
     <!-- used for search chip. -->
     <include layout="@layout/search_chip_row"/>
 
@@ -31,8 +30,8 @@
         android:clipChildren="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/profile_tab_padding"
-        android:paddingRight="@dimen/profile_tab_padding"
+        android:paddingStart="@dimen/main_container_padding_start"
+        android:paddingEnd="@dimen/main_container_padding_end"
         android:orientation="vertical">
 
         <com.google.android.material.tabs.TabLayout
