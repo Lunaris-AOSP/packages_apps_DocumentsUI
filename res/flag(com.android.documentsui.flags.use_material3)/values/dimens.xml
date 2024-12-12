@@ -31,6 +31,7 @@
     <dimen name="root_spacer_padding">0dp</dimen>
     <!-- block end -->
     <dimen name="root_action_icon_size">24dp</dimen>
+    <!-- TODO(b/379776735): remove this after M3 uplift -->
     <dimen name="root_icon_disabled_alpha">?android:attr/disabledAlpha</dimen>
     <dimen name="check_icon_size">30dp</dimen>
     <dimen name="zoom_icon_size">24dp</dimen>
