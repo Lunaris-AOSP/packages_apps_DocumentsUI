@@ -137,4 +137,18 @@
         <item name="chipStrokeColor">@color/search_chip_stroke_color</item>
         <item name="chipCornerRadius">@dimen/search_chip_radius</item>
     </style>
+
+    <style name="DrawerStyle" parent="">
+        <item name="android:background">?attr/colorSurfaceContainer</item>
+        <item name="android:layout_marginHorizontal">@dimen/drawer_margin_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/drawer_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/drawer_margin_bottom</item>
+        <item name="android:dividerHeight">@dimen/drawer_item_vertical_margin</item>
+    </style>
+
+    <style name="DrawerItemStyle" parent="">
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:background">@drawable/root_item_background</item>
+    </style>
 </resources>

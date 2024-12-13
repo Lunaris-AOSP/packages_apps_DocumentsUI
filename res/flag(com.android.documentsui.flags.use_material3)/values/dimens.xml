@@ -26,9 +26,11 @@
     <dimen name="icon_size">40dp</dimen>
     <dimen name="button_touch_size">48dp</dimen>
     <dimen name="root_icon_size">24dp</dimen>
+    <!-- TODO(b/379776735): remove this block after M3 uplift -->
     <dimen name="root_icon_margin">0dp</dimen>
     <dimen name="root_spacer_padding">0dp</dimen>
-    <dimen name="root_action_icon_size">18dp</dimen>
+    <!-- block end -->
+    <dimen name="root_action_icon_size">24dp</dimen>
     <dimen name="root_icon_disabled_alpha">?android:attr/disabledAlpha</dimen>
     <dimen name="check_icon_size">30dp</dimen>
     <dimen name="zoom_icon_size">24dp</dimen>
@@ -60,6 +62,15 @@
     <dimen name="button_corner_radius">2dp</dimen>
 
     <dimen name="drawer_edge_width">12dp</dimen>
+    <dimen name="drawer_margin_horizontal">@dimen/space_extra_small_6</dimen>
+    <dimen name="drawer_margin_top">@dimen/space_medium_1</dimen>
+    <dimen name="drawer_margin_bottom">@dimen/space_small_1</dimen>
+    <dimen name="drawer_divider_padding_horizontal">16dp</dimen>
+    <dimen name="drawer_divider_padding_vertical">@dimen/space_extra_small_4</dimen>
+    <dimen name="drawer_item_height">56dp</dimen>
+    <dimen name="drawer_item_vertical_margin">10dp</dimen>
+    <dimen name="drawer_item_text_margin_start">12dp</dimen>
+    <dimen name="drawer_item_action_icon_margin_start">4dp</dimen>
 
     <dimen name="drag_shadow_width">176dp</dimen>
     <dimen name="drag_shadow_height">64dp</dimen>
@@ -148,4 +159,6 @@
     <dimen name="cross_profile_button_message_margin_top">4dp</dimen>
 
     <dimen name="focus_ring_width">3dp</dimen>
+    <dimen name="hover_overlay_alpha">0.10</dimen>
+    <dimen name="ripple_overlay_alpha">0.08</dimen>
 </resources>
