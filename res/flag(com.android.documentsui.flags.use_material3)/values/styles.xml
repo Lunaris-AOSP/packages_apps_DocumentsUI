@@ -35,8 +35,8 @@
     </style>
 
     <style name="ToolbarStyles" parent="@style/Widget.Material3.Toolbar">
-        <item name="android:paddingStart">@dimen/main_container_padding_start</item>
-        <item name="android:layout_marginTop">@dimen/main_container_margin_top</item>
+        <item name="android:paddingStart">@dimen/toolbar_padding_start</item>
+        <item name="android:paddingEnd">@dimen/toolbar_padding_end</item>
         <item name="contentInsetStart">@dimen/toolbar_content_inset_start</item>
         <item name="contentInsetStartWithNavigation">@dimen/toolbar_content_inset_start</item>
         <item name="titleMarginStart">@dimen/search_bar_text_margin_start</item>
@@ -134,9 +134,9 @@
             scrollbar appears on the edge of the container, and scrollbar trigger area doesn't
             affect the hover effect of the views (e.g. action icon) on the edge.
          -->
-        <item name="android:paddingHorizontal">@dimen/drawer_margin_horizontal</item>
-        <item name="android:paddingTop">@dimen/drawer_margin_top</item>
-        <item name="android:paddingBottom">@dimen/drawer_margin_bottom</item>
+        <item name="android:paddingHorizontal">@dimen/drawer_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/drawer_padding_top</item>
+        <item name="android:paddingBottom">@dimen/drawer_padding_bottom</item>
         <item name="android:dividerHeight">@dimen/drawer_item_vertical_margin</item>
         <item name="android:scrollbarStyle">outsideOverlay</item>
         <item name="android:clipToPadding">false</item>
