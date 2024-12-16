@@ -91,8 +91,6 @@
     </style>
 
     <style name="MaterialAlertDialogTitleStyle" parent="@style/MaterialAlertDialog.Material3.Title.Text.CenterStacked">
-        <item name="android:textColor">?attr/colorOnSurface</item>
-        <item name="android:textSize">20sp</item>
         <item name="fontFamily">@string/config_fontFamilyMedium</item>
     </style>
 
@@ -106,7 +104,6 @@
 
     <style name="DialogTextButton" parent="@style/Widget.Material3.Button.TextButton.Dialog">
         <item name="android:textAppearance">@style/MaterialButtonTextAppearance</item>
-        <item name="android:textColor">?android:attr/colorAccent</item>
     </style>
 
     <style name="EmptyStateButton" parent="@style/Widget.Material3.Button.TextButton">
@@ -118,14 +115,7 @@
         <item name="buttonBarNegativeButtonStyle">@style/DialogTextButton</item>
     </style>
 
-    <style name="MaterialAlertDialogStyle" parent="@style/MaterialAlertDialog.Material3">
-        <item name="backgroundInsetTop">12dp</item>
-        <item name="backgroundInsetBottom">12dp</item>
-    </style>
-
     <style name="MaterialAlertDialogTheme" parent="@style/ThemeOverlay.Material3.MaterialAlertDialog.Centered">
-        <item name="android:dialogCornerRadius">@dimen/grid_item_radius</item>
-        <item name="alertDialogStyle">@style/MaterialAlertDialogStyle</item>
         <item name="buttonBarPositiveButtonStyle">@style/DialogTextButton</item>
         <item name="buttonBarNegativeButtonStyle">@style/DialogTextButton</item>
         <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialogTitleStyle</item>
