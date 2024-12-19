@@ -223,6 +223,12 @@ public class ActionHandler<T extends FragmentActivity & AbstractActionHandler.Co
     }
 
     @Override
+    public void openDocumentViewOnly(DocumentInfo doc) {
+        mInjector.searchManager.recordHistory();
+        openDocument(doc, VIEW_TYPE_REGULAR, VIEW_TYPE_NONE);
+    }
+
+    @Override
     public void springOpenDirectory(DocumentInfo doc) {
         assert(doc.isDirectory());
         mActionModeAddons.finishActionMode();
