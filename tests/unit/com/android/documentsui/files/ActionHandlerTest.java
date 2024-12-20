@@ -460,11 +460,24 @@ public class ActionHandlerTest {
     }
 
     @Test
+    @DisableFlags({Flags.FLAG_DESKTOP_FILE_HANDLING})
     public void testShowChooser() throws Exception {
         mActivity.currentRoot = TestProvidersAccess.DOWNLOADS;
 
         mHandler.showChooserForDoc(TestEnv.FILE_PDF);
         mActivity.assertActivityStarted(Intent.ACTION_CHOOSER);
+    }
+
+    @Test
+    @EnableFlags({Flags.FLAG_DESKTOP_FILE_HANDLING})
+    public void testShowChooserDesktop() throws Exception {
+        mActivity.currentRoot = TestProvidersAccess.DOWNLOADS;
+
+        mHandler.showChooserForDoc(TestEnv.FILE_PDF);
+        Intent actual = mActivity.startActivity.getLastValue();
+        assertEquals(Intent.ACTION_VIEW, actual.getAction());
+        assertEquals("ComponentInfo{android/com.android.internal.app.ResolverActivity}",
+                actual.getComponent().toString());
     }
 
     @Test
