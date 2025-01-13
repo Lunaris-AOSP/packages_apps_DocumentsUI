@@ -124,6 +124,7 @@
     </style>
 
     <style name="FileItemLabelText" parent="@style/TextAppearance.Material3.TitleSmall">
+        <item name="android:textColor">@color/doc_list_item_label_color</item>
         <item name="fontFamily">@string/config_fontFamily</item>
     </style>
 
