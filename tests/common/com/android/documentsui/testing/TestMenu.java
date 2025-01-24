@@ -77,6 +77,7 @@ public abstract class TestMenu implements Menu {
                 R.id.option_menu_debug,
                 R.id.option_menu_new_window,
                 R.id.option_menu_create_dir,
+                R.id.option_menu_extract_all,
                 R.id.option_menu_select_all,
                 R.id.option_menu_settings,
                 R.id.option_menu_inspect,
