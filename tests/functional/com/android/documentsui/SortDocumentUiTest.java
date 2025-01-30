@@ -16,7 +16,11 @@
 
 package com.android.documentsui;
 
+import static com.android.documentsui.flags.Flags.FLAG_USE_MATERIAL3;
+
 import android.net.Uri;
+import android.platform.test.annotations.RequiresFlagsEnabled;
+import android.view.KeyEvent;
 
 import androidx.test.filters.LargeTest;
 
@@ -232,5 +236,32 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         bots.sort.sortBy(
                 SortModel.SORT_DIMENSION_ID_FILE_TYPE, SortDimension.SORT_DIRECTION_DESCENDING);
         bots.directory.assertOrder(DIRS_IN_NAME_ASC, FILES_IN_TYPE_DESC);
+    }
+
+    @RequiresFlagsEnabled(FLAG_USE_MATERIAL3)
+    public void testSortByArrowIcon() throws Exception {
+        initFiles();
+
+        bots.main.switchToListMode();
+
+        // Set up the sort in descending direction to allow deterministic behaviour of the sort
+        // icon.
+        bots.sort.sortBy(
+                SortModel.SORT_DIMENSION_ID_TITLE, SortDimension.SORT_DIRECTION_DESCENDING);
+        bots.directory.assertOrder(DIRS_IN_NAME_DESC, FILES_IN_NAME_DESC);
+
+        // Tab in reverse order until the sort icon is the focus (this avoids tabbing through the
+        // roots list which is quite long in tests).
+        while (!bots.sort.isSortIconFocused()) {
+            bots.keyboard.pressKey(KeyEvent.KEYCODE_TAB, KeyEvent.META_SHIFT_LEFT_ON);
+        }
+
+        // Press enter on the sort icon and ensure the sort direction is changed.
+        bots.keyboard.pressKey(KeyEvent.KEYCODE_ENTER);
+        bots.directory.assertOrder(DIRS_IN_NAME_ASC, FILES_IN_NAME_ASC);
+
+        // Space should also work in the same way as the ENTER key.
+        bots.keyboard.pressKey(KeyEvent.KEYCODE_SPACE);
+        bots.directory.assertOrder(DIRS_IN_NAME_DESC, FILES_IN_NAME_DESC);
     }
 }

@@ -16,6 +16,9 @@
 
 package com.android.documentsui.sorting;
 
+import static com.android.documentsui.flags.Flags.useMaterial3;
+
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.android.documentsui.R;
@@ -33,6 +36,7 @@ public final class TableHeaderController implements SortController.WidgetControl
     // We assign this here porque each method reference creates a new object
     // instance (which is wasteful).
     private final View.OnClickListener mOnCellClickListener = this::onCellClicked;
+    private final View.OnKeyListener mOnCellKeyListener = this::onCellKeyEvent;
     private final SortModel.UpdateListener mModelListener = this::onModelUpdate;
     private final View mTableHeader;
 
@@ -88,8 +92,12 @@ public final class TableHeaderController implements SortController.WidgetControl
         if (dimension.getVisibility() == View.VISIBLE
                 && dimension.getSortCapability() != SortDimension.SORT_CAPABILITY_NONE) {
             cell.setOnClickListener(mOnCellClickListener);
+            if (useMaterial3()) {
+                cell.setSortArrowListeners(mOnCellClickListener, mOnCellKeyListener, dimension);
+            }
         } else {
             cell.setOnClickListener(null);
+            if (useMaterial3()) cell.setSortArrowListeners(null, null, null);
         }
     }
 
@@ -97,5 +105,19 @@ public final class TableHeaderController implements SortController.WidgetControl
         SortDimension dimension = (SortDimension) v.getTag();
 
         mModel.sortByUser(dimension.getId(), dimension.getNextDirection());
+    }
+
+    /** Sorts the column if the key pressed was Enter or Space. */
+    private boolean onCellKeyEvent(View v, int keyCode, KeyEvent event) {
+        if (!useMaterial3()) {
+            return false;
+        }
+        // Only the enter and space bar should trigger the sort header to engage.
+        if (event.getAction() == KeyEvent.ACTION_UP
+                && (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_SPACE)) {
+            onCellClicked(v);
+            return true;
+        }
+        return false;
     }
 }
