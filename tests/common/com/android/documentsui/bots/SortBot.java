@@ -101,16 +101,6 @@ public class SortBot extends Bots.BaseBot {
         assertTrue(Matchers.present(ColumnSortBot.MATCHER));
     }
 
-    /**
-     * Identify if the sort arrow in list mode is focused.
-     *
-     * @return True if the sort arrow in the file list is found.
-     */
-    public boolean isSortIconFocused() {
-        UiObject2 sortArrow = mDevice.findObject(By.res(mTargetPackage + ":id/sort_arrow"));
-        return sortArrow.isFocused();
-    }
-
     private boolean sortByMenu(int id, @SortDirection int direction) {
         assert (direction != SortDimension.SORT_DIRECTION_NONE);
 
