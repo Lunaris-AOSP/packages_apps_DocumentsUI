@@ -102,6 +102,11 @@ public abstract class TestMenu implements Menu {
             if (id == R.id.option_menu_search) {
                 item.setActionView(Mockito.mock(SearchView.class));
             }
+
+            if (id == R.id.option_menu_extract_all) {
+                item.setEnabled(false);
+                item.setVisible(false);
+            }
         }
         return menu;
     }

@@ -199,6 +199,7 @@ public final class MenuManagerTest {
         mActionModeDeselectAll.assertDisabledAndInvisible();
         actionModeViewInOwner.assertDisabledAndInvisible();
         actionModeSort.assertEnabledAndVisible();
+        mOptionExtractAll.assertDisabledAndInvisible();
     }
 
     @Test
@@ -272,6 +273,7 @@ public final class MenuManagerTest {
         optionSort.assertEnabledAndVisible();
         mOptionLauncher.assertDisabledAndInvisible();
         mOptionShowHiddenFiles.assertEnabledAndVisible();
+        mOptionExtractAll.assertDisabledAndInvisible();
         assertTrue(testSearchManager.showMenuCalled());
     }
 
@@ -285,6 +287,7 @@ public final class MenuManagerTest {
         optionCreateDir.assertDisabledAndInvisible();
         subOptionGrid.assertEnabledAndVisible();
         subOptionList.assertDisabledAndInvisible();
+        mOptionExtractAll.assertDisabledAndInvisible();
         assertFalse(testSearchManager.showMenuCalled());
     }
 
@@ -304,6 +307,7 @@ public final class MenuManagerTest {
 
         subOptionGrid.assertDisabledAndInvisible();
         subOptionList.assertDisabledAndInvisible();
+        mOptionExtractAll.assertDisabledAndInvisible();
     }
 
 
