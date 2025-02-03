@@ -255,6 +255,7 @@ public final class MenuManagerTest {
         actionModeSort.assertEnabledAndVisible();
         actionModeSelectAll.assertEnabledAndVisible();
         mActionModeDeselectAll.assertDisabledAndInvisible();
+        mOptionExtractAll.assertDisabledAndInvisible();
     }
 
     @Test
@@ -270,6 +271,7 @@ public final class MenuManagerTest {
         actionModeExtractTo.assertDisabledAndInvisible();
         actionModeMoveTo.assertDisabledAndInvisible();
         actionModeViewInOwner.assertDisabledAndInvisible();
+        mOptionExtractAll.assertDisabledAndInvisible();
     }
 
     @Test
