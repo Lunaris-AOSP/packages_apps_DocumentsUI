@@ -19,13 +19,20 @@ package com.android.documentsui;
 import android.net.Uri;
 
 import androidx.test.filters.LargeTest;
+import androidx.test.runner.AndroidJUnit4;
 
 import com.android.documentsui.files.FilesActivity;
 import com.android.documentsui.sorting.SortDimension;
 import com.android.documentsui.sorting.SortModel;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
 @LargeTest
-public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
+@RunWith(AndroidJUnit4.class)
+public class SortDocumentUiTest extends ActivityTestJunit4<FilesActivity> {
 
     private static final String DIR_1 = "folder_1";
     private static final String DIR_2 = "dir_2";
@@ -52,10 +59,6 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
     private static final String[] FILES_IN_TYPE_ASC = {FILE_2, FILE_3, FILE_1};
     private static final String[] FILES_IN_TYPE_DESC = reverse(FILES_IN_TYPE_ASC);
 
-    public SortDocumentUiTest() {
-        super(FilesActivity.class);
-    }
-
     private static String[] reverse(String[] array) {
         String[] ret = new String[array.length];
 
@@ -66,10 +69,15 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         return ret;
     }
 
-    @Override
+    @Before
     public void setUp() throws Exception {
         super.setUp();
         bots.roots.closeDrawer();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        super.tearDown();
     }
 
     private void initFiles() throws Exception {
@@ -84,24 +92,26 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
      */
     private void initFiles(long sleep) throws Exception {
         for (int i = 0; i < FILES.length; ++i) {
-            Uri uri = mDocsHelper.createDocument(rootDir0, MIMES[i], FILES[i]);
+            Uri uri = mDocsHelper.createDocument(getInitialRoot(), MIMES[i], FILES[i]);
             mDocsHelper.writeDocument(uri, FILES[i].getBytes());
 
             Thread.sleep(sleep);
         }
 
         for (String dir : DIRS) {
-            mDocsHelper.createFolder(rootDir0, dir);
+            mDocsHelper.createFolder(getInitialRoot(), dir);
 
             Thread.sleep(sleep);
         }
     }
 
+    @Test
     public void testDefaultSortByNameAscending() throws Exception {
         initFiles();
         bots.directory.assertOrder(DIRS_IN_NAME_ASC, FILES_IN_NAME_ASC);
     }
 
+    @Test
     public void testSortByName_Descending_listMode() throws Exception {
         initFiles();
 
@@ -112,6 +122,7 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         bots.directory.assertOrder(DIRS_IN_NAME_DESC, FILES_IN_NAME_DESC);
     }
 
+    @Test
     public void testSortBySize_Ascending_listMode() throws Exception {
         initFiles();
 
@@ -121,6 +132,7 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         bots.directory.assertOrder(DIRS_IN_NAME_ASC, FILES_IN_SIZE_ASC);
     }
 
+    @Test
     public void testSortBySize_Descending_listMode() throws Exception {
         initFiles();
 
@@ -130,6 +142,7 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         bots.directory.assertOrder(DIRS_IN_NAME_ASC, FILES_IN_SIZE_DESC);
     }
 
+    @Test
     public void testSortByModified_Ascending_listMode() throws Exception {
         initFiles(1000);
 
@@ -139,6 +152,7 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         bots.directory.assertOrder(DIRS, FILES);
     }
 
+    @Test
     public void testSortByModified_Descending_listMode() throws Exception {
         initFiles(1000);
 
@@ -148,6 +162,7 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         bots.directory.assertOrder(DIRS_IN_MODIFIED_DESC, FILES_IN_MODIFIED_DESC);
     }
 
+    @Test
     public void testSortByType_Ascending_listMode() throws Exception {
         initFiles();
 
@@ -158,6 +173,7 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         bots.directory.assertOrder(DIRS_IN_NAME_ASC, FILES_IN_TYPE_ASC);
     }
 
+    @Test
     public void testSortByType_Descending_listMode() throws Exception {
         initFiles();
 
@@ -168,6 +184,7 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         bots.directory.assertOrder(DIRS_IN_NAME_ASC, FILES_IN_TYPE_DESC);
     }
 
+    @Test
     public void testSortByName_Descending_gridMode() throws Exception {
         initFiles();
 
@@ -178,6 +195,7 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         bots.directory.assertOrder(DIRS_IN_NAME_DESC, FILES_IN_NAME_DESC);
     }
 
+    @Test
     public void testSortBySize_Ascending_gridMode() throws Exception {
         initFiles();
 
@@ -187,6 +205,7 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         bots.directory.assertOrder(DIRS_IN_NAME_ASC, FILES_IN_SIZE_ASC);
     }
 
+    @Test
     public void testSortBySize_Descending_gridMode() throws Exception {
         initFiles();
 
@@ -196,6 +215,7 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         bots.directory.assertOrder(DIRS_IN_NAME_ASC, FILES_IN_SIZE_DESC);
     }
 
+    @Test
     public void testSortByModified_Ascending_gridMode() throws Exception {
         initFiles(1000);
 
@@ -205,6 +225,7 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         bots.directory.assertOrder(DIRS, FILES);
     }
 
+    @Test
     public void testSortByModified_Descending_gridMode() throws Exception {
         initFiles(1000);
 
@@ -214,6 +235,7 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         bots.directory.assertOrder(DIRS_IN_MODIFIED_DESC, FILES_IN_MODIFIED_DESC);
     }
 
+    @Test
     public void testSortByType_Ascending_gridMode() throws Exception {
         initFiles();
 
@@ -224,6 +246,7 @@ public class SortDocumentUiTest extends ActivityTest<FilesActivity> {
         bots.directory.assertOrder(DIRS_IN_NAME_ASC, FILES_IN_TYPE_ASC);
     }
 
+    @Test
     public void testSortByType_Descending_gridMode() throws Exception {
         initFiles();
 
