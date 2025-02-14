@@ -15,6 +15,7 @@
  */
 package com.android.documentsui.loaders
 
+import android.os.Bundle
 import androidx.test.filters.SmallTest
 import com.android.documentsui.ContentLock
 import com.android.documentsui.base.DocumentInfo
@@ -36,11 +37,16 @@ class FolderLoaderTest(private val testParams: LoaderTestParams) : BaseLoaderTes
         @JvmStatic
         @Parameters(name = "with parameters {0}")
         fun data() = listOf(
-            LoaderTestParams("", null, TOTAL_FILE_COUNT),
+            LoaderTestParams("", null, Bundle(), TOTAL_FILE_COUNT),
             // The first file is at NOW, the second at NOW - 1h, etc.
-            LoaderTestParams("", Duration.ofMinutes(1L), 1),
-            LoaderTestParams("", Duration.ofMinutes(60L + 1), 2),
-            LoaderTestParams("", Duration.ofMinutes(TOTAL_FILE_COUNT * 60L + 1), TOTAL_FILE_COUNT),
+            LoaderTestParams("", Duration.ofMinutes(1L), Bundle(), 1),
+            LoaderTestParams("", Duration.ofMinutes(60L + 1), Bundle(), 2),
+            LoaderTestParams(
+                "",
+                Duration.ofMinutes(TOTAL_FILE_COUNT * 60L + 1),
+                Bundle(),
+                TOTAL_FILE_COUNT
+            ),
         )
     }
 
@@ -56,7 +62,8 @@ class FolderLoaderTest(private val testParams: LoaderTestParams) : BaseLoaderTes
                 testParams.lastModifiedDelta,
                 null,
                 true,
-                arrayOf<String>("*/*")
+                arrayOf<String>("*/*"),
+                testParams.otherArgs,
             )
         val contentLock = ContentLock()
         // TODO(majewski): Is there a better way to create Downloads root folder DocumentInfo?

@@ -15,6 +15,8 @@
  */
 package com.android.documentsui.loaders
 
+import android.os.Bundle
+import android.provider.DocumentsContract
 import androidx.test.filters.SmallTest
 import com.android.documentsui.ContentLock
 import com.android.documentsui.LockingContentObserver
@@ -34,6 +36,12 @@ import org.junit.runners.Parameterized.Parameters
 
 private const val TOTAL_FILE_COUNT = 8
 
+fun createQueryArgs(vararg mimeTypes: String): Bundle {
+    val args = Bundle()
+    args.putStringArray(DocumentsContract.QUERY_ARG_MIME_TYPES, arrayOf<String>(*mimeTypes))
+    return args
+}
+
 @RunWith(Parameterized::class)
 @SmallTest
 class SearchLoaderTest(private val testParams: LoaderTestParams) : BaseLoaderTest() {
@@ -45,12 +53,14 @@ class SearchLoaderTest(private val testParams: LoaderTestParams) : BaseLoaderTes
         @JvmStatic
         @Parameters(name = "with parameters {0}")
         fun data() = listOf(
-            LoaderTestParams("sample", null, TOTAL_FILE_COUNT),
-            LoaderTestParams("txt", null, 2),
-            LoaderTestParams("foozig", null, 0),
+            LoaderTestParams("sample", null, Bundle(), TOTAL_FILE_COUNT),
+            LoaderTestParams("txt", null, Bundle(), 2),
+            LoaderTestParams("foozig", null, Bundle(), 0),
             // The first file is at NOW, the second at NOW - 1h; expect 2.
-            LoaderTestParams("sample", Duration.ofMinutes(60 + 1), 2),
-            // TODO(b:378590632): Add test for recents.
+            LoaderTestParams("sample", Duration.ofMinutes(60 + 1), Bundle(), 2),
+            LoaderTestParams("sample", null, createQueryArgs("image/*"), 2),
+            LoaderTestParams("sample", null, createQueryArgs("image/*", "video/*"), 6),
+            LoaderTestParams("sample", null, createQueryArgs("application/pdf"), 0),
         )
     }
 
@@ -72,7 +82,8 @@ class SearchLoaderTest(private val testParams: LoaderTestParams) : BaseLoaderTes
                 testParams.lastModifiedDelta,
                 null,
                 true,
-                arrayOf("*/*")
+                arrayOf("*/*"),
+                testParams.otherArgs,
             )
         val rootIds = listOf(TestProvidersAccess.DOWNLOADS)
 
@@ -101,7 +112,8 @@ class SearchLoaderTest(private val testParams: LoaderTestParams) : BaseLoaderTes
     fun testBlankQueryAndRecency() {
         val userIds = listOf(TestProvidersAccess.DOWNLOADS.userId)
         val rootIds = listOf(TestProvidersAccess.DOWNLOADS)
-        val noLastModifiedQueryOptions = QueryOptions(10, null, null, true, arrayOf("*/*"))
+        val noLastModifiedQueryOptions =
+            QueryOptions(10, null, null, true, arrayOf("*/*"), Bundle())
 
         // Blank query and no last modified duration is invalid.
         assertThrows(IllegalArgumentException::class.java) {
