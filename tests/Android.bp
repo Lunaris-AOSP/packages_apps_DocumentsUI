@@ -82,8 +82,8 @@ android_library {
         "res",
     ],
 
-    min_sdk_version: "29",
-    target_sdk_version: "29",
+    min_sdk_version: "30",
+    target_sdk_version: "30",
 }
 
 android_library {
@@ -117,8 +117,8 @@ android_library {
         "-0 .zip",
     ],
 
-    min_sdk_version: "29",
-    target_sdk_version: "29",
+    min_sdk_version: "30",
+    target_sdk_version: "30",
     lint: {
         baseline_filename: "lint-baseline.xml",
     },
@@ -148,6 +148,6 @@ android_test {
     certificate: "platform",
 
     instrumentation_for: "DocumentsUI",
-    min_sdk_version: "29",
-    target_sdk_version: "29",
+    min_sdk_version: "30",
+    target_sdk_version: "30",
 }
