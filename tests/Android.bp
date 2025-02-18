@@ -97,6 +97,7 @@ android_library {
         "functional/**/*.java",
         "functional/**/*.kt",
         "unit/**/*.java",
+        "unit/**/*.kt",
     ],
 
     libs: [
