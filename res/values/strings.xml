@@ -587,4 +587,7 @@
     <!-- Accessibility announcement when switching to list mode of files and directories shown. [CHAR_LIMIT=100] -->
     <string name="list_mode_showing">Showing in list mode.</string>
 
+    <!-- Unicode Character “•” (U+2022). -->
+    <string name="bullet">\u2022</string>
+
 </resources>
