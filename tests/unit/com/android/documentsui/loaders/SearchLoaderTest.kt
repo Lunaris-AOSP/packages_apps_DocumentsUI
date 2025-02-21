@@ -16,11 +16,15 @@
 package com.android.documentsui.loaders
 
 import android.os.Bundle
+import android.platform.test.annotations.RequiresFlagsEnabled
+import android.platform.test.flag.junit.CheckFlagsRule
+import android.platform.test.flag.junit.DeviceFlagsValueProvider
 import android.provider.DocumentsContract
 import androidx.test.filters.SmallTest
 import com.android.documentsui.ContentLock
 import com.android.documentsui.LockingContentObserver
 import com.android.documentsui.base.DocumentInfo
+import com.android.documentsui.flags.Flags.FLAG_USE_SEARCH_V2_RW
 import com.android.documentsui.testing.TestFileTypeLookup
 import com.android.documentsui.testing.TestProvidersAccess
 import java.time.Duration
@@ -29,6 +33,7 @@ import java.util.concurrent.Executors
 import junit.framework.Assert.assertEquals
 import org.junit.Assert.assertThrows
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -64,6 +69,9 @@ class SearchLoaderTest(private val testParams: LoaderTestParams) : BaseLoaderTes
         )
     }
 
+    @get:Rule
+    val checkFlagsRule: CheckFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule()
+
     @Before
     override fun setUp() {
         super.setUp()
@@ -71,6 +79,7 @@ class SearchLoaderTest(private val testParams: LoaderTestParams) : BaseLoaderTes
     }
 
     @Test
+    @RequiresFlagsEnabled(FLAG_USE_SEARCH_V2_RW)
     fun testLoadInBackground() {
         val mockProvider = mEnv.mockProviders[TestProvidersAccess.DOWNLOADS.authority]
         val docs = createDocuments(TOTAL_FILE_COUNT)
@@ -109,6 +118,7 @@ class SearchLoaderTest(private val testParams: LoaderTestParams) : BaseLoaderTes
     }
 
     @Test
+    @RequiresFlagsEnabled(FLAG_USE_SEARCH_V2_RW)
     fun testBlankQueryAndRecency() {
         val userIds = listOf(TestProvidersAccess.DOWNLOADS.userId)
         val rootIds = listOf(TestProvidersAccess.DOWNLOADS)
