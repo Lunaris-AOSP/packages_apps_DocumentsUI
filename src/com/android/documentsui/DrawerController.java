@@ -17,7 +17,7 @@
 package com.android.documentsui;
 
 import static com.android.documentsui.base.SharedMinimal.DEBUG;
-import static com.android.documentsui.flags.Flags.useMaterial3;
+import static com.android.documentsui.util.FlagUtils.isUseMaterial3FlagEnabled;
 
 import android.app.Activity;
 import android.util.Log;
@@ -208,7 +208,7 @@ public abstract class DrawerController implements DrawerListener {
 
         @Override
         void setTitle(String title) {
-            if (!useMaterial3()) {
+            if (!isUseMaterial3FlagEnabled()) {
                 mToolbar.setTitle(title);
             }
         }

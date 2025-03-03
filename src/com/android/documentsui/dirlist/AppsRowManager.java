@@ -16,7 +16,7 @@
 
 package com.android.documentsui.dirlist;
 
-import static com.android.documentsui.flags.Flags.useMaterial3;
+import static com.android.documentsui.util.FlagUtils.isUseMaterial3FlagEnabled;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -105,7 +105,7 @@ public class AppsRowManager {
     }
 
     private boolean shouldShow(State state, boolean isSearchExpanded) {
-        if (useMaterial3()) {
+        if (isUseMaterial3FlagEnabled()) {
             return false;
         }
 
