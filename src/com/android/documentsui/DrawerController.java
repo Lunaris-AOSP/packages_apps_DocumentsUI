@@ -60,7 +60,7 @@ public abstract class DrawerController implements DrawerListener {
         }
 
         View drawer = activity.findViewById(R.id.drawer_roots);
-        // This will be null in M3, we will check the flag when it's used in
+        // This will be null when use_material3 flag is ON, we will check the flag when it's used in
         // RuntimeDrawerController.
         Toolbar toolbar = (Toolbar) activity.findViewById(R.id.roots_toolbar);
         drawer.getLayoutParams().width = calculateDrawerWidth(activity);

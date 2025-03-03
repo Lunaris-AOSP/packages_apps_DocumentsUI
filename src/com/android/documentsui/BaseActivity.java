@@ -573,7 +573,7 @@ public abstract class BaseActivity
             root.setPadding(insets.getSystemWindowInsetLeft(),
                     insets.getSystemWindowInsetTop(), insets.getSystemWindowInsetRight(), 0);
 
-            // in M3, no additional bottom gap in full screen mode.
+            // When use_material3 flag is ON, no additional bottom gap in full screen mode.
             if (!isUseMaterial3FlagEnabled()) {
                 View saveContainer = findViewById(R.id.container_save);
                 saveContainer.setPadding(
