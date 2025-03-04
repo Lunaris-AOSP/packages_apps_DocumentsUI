@@ -70,7 +70,7 @@ final class ListDocumentHolder extends DocumentHolder {
     private final @Nullable LinearLayout mDetails;
     // TextView for date + size + summary, null only for tablets/sw720dp
     private final @Nullable TextView mMetadataView;
-    // Non-null only when M3 flag is ON.
+    // Non-null only when use_material3 flag is ON.
     private final @Nullable MaterialCardView mIconWrapper;
     private final ImageView mIconMime;
     private final ImageView mIconThumb;

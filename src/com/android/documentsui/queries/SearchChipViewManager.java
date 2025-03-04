@@ -418,8 +418,8 @@ public class SearchChipViewManager {
             return context.getDrawable(R.drawable.ic_chip_from_this_week);
         }
 
-        // For M3, we don't want to use MIME type icons for image/audio/video/document from the
-        // system.
+        // When use_material3 flag is ON, we don't want to use MIME type icons for
+        // image/audio/video/document from the system.
         if (isUseMaterial3FlagEnabled()) {
             return switch (chipType) {
                 case TYPE_IMAGES -> context.getDrawable(R.drawable.ic_chip_image);

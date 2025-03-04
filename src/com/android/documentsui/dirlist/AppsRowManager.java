@@ -47,7 +47,7 @@ import java.util.Map;
 
 /**
  * A manager class stored apps row chip data list. Data will be synced by RootsFragment.
- * TODO(b/379776735): Remove this after M3 uplift.
+ * TODO(b/379776735): Remove this after use_material3 flag is launched.
  */
 public class AppsRowManager {
 
