@@ -31,7 +31,7 @@ class FlagUtils {
 
         @JvmStatic
         fun isZipNgFlagEnabled(): Boolean {
-            return Flags.zipNg()
+            return Flags.zipNgRo()
         }
 
         @JvmStatic
@@ -41,17 +41,17 @@ class FlagUtils {
 
         @JvmStatic
         fun isDesktopFileHandlingFlagEnabled(): Boolean {
-            return Flags.desktopFileHandling()
+            return Flags.desktopFileHandlingRo()
         }
 
         @JvmStatic
         fun isHideRootsOnDesktopFlagEnabled(): Boolean {
-            return Flags.hideRootsOnDesktop()
+            return Flags.hideRootsOnDesktopRo()
         }
 
         @JvmStatic
         fun isUsePeekPreviewFlagEnabled(): Boolean {
-            return Flags.usePeekPreview()
+            return Flags.usePeekPreviewRo()
         }
     }
 }
