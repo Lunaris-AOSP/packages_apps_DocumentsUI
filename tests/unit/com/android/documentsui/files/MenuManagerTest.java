@@ -619,7 +619,7 @@ public final class MenuManagerTest {
     }
 
     @Test
-    @RequiresFlagsDisabled({Flags.FLAG_DESKTOP_FILE_HANDLING})
+    @RequiresFlagsDisabled({Flags.FLAG_DESKTOP_FILE_HANDLING_RO})
     public void testContextMenu_OnFile_CanOpen() {
         selectionDetails.canOpen = true;
         mgr.updateContextMenuForFiles(testMenu, selectionDetails);
@@ -628,7 +628,7 @@ public final class MenuManagerTest {
     }
 
     @Test
-    @RequiresFlagsEnabled({Flags.FLAG_DESKTOP_FILE_HANDLING})
+    @RequiresFlagsEnabled({Flags.FLAG_DESKTOP_FILE_HANDLING_RO})
     public void testContextMenu_OnFile_CanOpenDesktop() {
         selectionDetails.canOpen = true;
         mgr.updateContextMenuForFiles(testMenu, selectionDetails);
