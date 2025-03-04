@@ -16,6 +16,8 @@
 
 package com.android.documentsui.files;
 
+import static com.android.documentsui.util.FlagUtils.isZipNgFlagEnabled;
+
 import static junit.framework.Assert.assertEquals;
 
 import static org.junit.Assert.assertTrue;
@@ -492,7 +494,7 @@ public final class MenuManagerTest {
     public void testOptionMenu_ExtractAll() {
         dirDetails.isInArchive = true;
         mgr.updateOptionMenu(testMenu);
-        if (Flags.zipNg()) {
+        if (isZipNgFlagEnabled()) {
             mOptionExtractAll.assertEnabledAndVisible();
         } else {
             mOptionExtractAll.assertDisabledAndInvisible();

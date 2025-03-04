@@ -21,7 +21,7 @@ import static com.android.documentsui.DevicePolicyResources.Drawables.WORK_PROFI
 import static com.android.documentsui.base.DocumentInfo.getCursorInt;
 import static com.android.documentsui.base.DocumentInfo.getCursorLong;
 import static com.android.documentsui.base.DocumentInfo.getCursorString;
-import static com.android.documentsui.flags.Flags.useMaterial3;
+import static com.android.documentsui.util.FlagUtils.isUseMaterial3FlagEnabled;
 
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
@@ -81,7 +81,7 @@ final class GridDocumentHolder extends DocumentHolder {
             ConfigStore configStore) {
         super(context, parent, R.layout.item_doc_grid, configStore);
 
-        if (useMaterial3()) {
+        if (isUseMaterial3FlagEnabled()) {
             mIconWrapper = itemView.findViewById(R.id.icon_wrapper);
             mIconLayout = null;
             mIconMimeSm = null;
@@ -119,7 +119,7 @@ final class GridDocumentHolder extends DocumentHolder {
     @Override
     public void setSelected(boolean selected, boolean animate) {
         float checkAlpha = selected ? 1f : 0f;
-        if (!useMaterial3()) {
+        if (!isUseMaterial3FlagEnabled()) {
             // We always want to make sure our check box disappears if we're not selected,
             // even if the item is disabled. This is because this object can be reused
             // and this method will be called to setup initial state.
@@ -139,7 +139,7 @@ final class GridDocumentHolder extends DocumentHolder {
 
         super.setSelected(selected, animate);
 
-        if (!useMaterial3()) {
+        if (!isUseMaterial3FlagEnabled()) {
             if (animate) {
                 fade(mIconMimeSm, 1f - checkAlpha).start();
             } else {
@@ -164,7 +164,7 @@ final class GridDocumentHolder extends DocumentHolder {
         float imgAlpha = enabled ? 1f : DISABLED_ALPHA;
 
         mIconMimeLg.setAlpha(imgAlpha);
-        if (!useMaterial3()) {
+        if (!isUseMaterial3FlagEnabled()) {
             mIconMimeSm.setAlpha(imgAlpha);
         }
         mIconThumb.setAlpha(imgAlpha);
@@ -206,7 +206,7 @@ final class GridDocumentHolder extends DocumentHolder {
 
     @Override
     public boolean inSelectRegion(MotionEvent event) {
-        if (useMaterial3()) {
+        if (isUseMaterial3FlagEnabled()) {
             return Views.isEventOver(event, itemView.getParent(), mIconWrapper);
         }
         return Views.isEventOver(event, itemView.getParent(), mIconLayout);
@@ -240,7 +240,7 @@ final class GridDocumentHolder extends DocumentHolder {
         mIconThumb.animate().cancel();
         mIconThumb.setAlpha(0f);
 
-        if (useMaterial3()) {
+        if (isUseMaterial3FlagEnabled()) {
             mIconHelper.load(
                     mDoc, mIconThumb, mIconMimeLg, /* subIconMime= */ null,
                     thumbnailLoaded -> {

@@ -16,7 +16,7 @@
 
 package com.android.documentsui.files;
 
-import static com.android.documentsui.flags.Flags.useMaterial3;
+import static com.android.documentsui.util.FlagUtils.isUseMaterial3FlagEnabled;
 import static com.android.documentsui.testing.IntentAsserts.assertHasAction;
 import static com.android.documentsui.testing.IntentAsserts.assertHasData;
 import static com.android.documentsui.testing.IntentAsserts.assertHasExtra;
@@ -160,7 +160,7 @@ public class ActionHandlerTest {
     }
 
     private void assertSelectionContainerClosed() {
-        if (useMaterial3()) {
+        if (isUseMaterial3FlagEnabled()) {
             verify(mMockCloseSelectionBar, times(1)).run();
         } else {
             assertTrue(mActionModeAddons.finishActionModeCalled);

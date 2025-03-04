@@ -16,7 +16,7 @@
 
 package com.android.documentsui.sidebar;
 
-import static com.android.documentsui.flags.Flags.useMaterial3;
+import static com.android.documentsui.util.FlagUtils.isUseMaterial3FlagEnabled;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -102,7 +102,7 @@ public class AppItem extends Item {
 
         // In M3, we don't show action icon for the app items, do nothing here because the icons
         // are hidden by default.
-        if (!useMaterial3()) {
+        if (!isUseMaterial3FlagEnabled()) {
             final View actionIconArea = convertView.findViewById(R.id.action_icon_area);
             final ImageView actionIcon = (ImageView) convertView.findViewById(R.id.action_icon);
             bindActionIcon(actionIconArea, actionIcon);
