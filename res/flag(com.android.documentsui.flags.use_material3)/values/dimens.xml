@@ -205,6 +205,7 @@
     <dimen name="cross_profile_button_message_margin_top">4dp</dimen>
 
     <dimen name="focus_ring_width">3dp</dimen>
+    <!-- 3dp focus ring width + 2dp gap between the ring and the content -->
     <dimen name="focus_ring_gap">5dp</dimen>
     <dimen name="hover_overlay_alpha">0.08</dimen>
     <dimen name="ripple_overlay_alpha">0.10</dimen>
