@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2024 The Android Open Source Project
+<!-- Copyright (C) 2025 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,10 +14,8 @@
      limitations under the License.
 -->
 
-<!-- TODO(b/379776735): remove this file after use_material3 flag is launched. -->
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false"
-        android:alpha="@dimen/root_icon_disabled_alpha"
-        android:color="?android:colorControlNormal" />
-    <item android:color="?android:colorControlNormal" />
-</selector>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/list_item_height" />
+    <!-- The color here doesn't matter, it's just being used as a mask. -->
+    <solid android:color="@android:color/white" />
+</shape>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Copyright 2018 The Android Open Source Project
+  Copyright 2025 The Android Open Source Project
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -15,9 +15,6 @@
   limitations under the License.
   -->
 
-<!-- TODO(b/379776735): remove this file after use_material3 flag is launched. -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:color="@color/search_chip_text_selected_color"/>
-    <item android:state_enabled="true" android:color="?android:textColorSecondary"/>
-    <item android:state_enabled="false" android:color="?android:textColorSecondary" android:alpha="0.3"/>
+    <item android:alpha="@dimen/ripple_overlay_alpha" android:color="?attr/colorOnSurface" />
 </selector>
