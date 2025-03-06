@@ -45,6 +45,11 @@ class FlagUtils {
         }
 
         @JvmStatic
+        fun isVisualSignalsFlagEnabled(): Boolean {
+            return Flags.visualSignalsRo() && isUseMaterial3FlagEnabled()
+        }
+
+        @JvmStatic
         fun isHideRootsOnDesktopFlagEnabled(): Boolean {
             return Flags.hideRootsOnDesktopRo()
         }
