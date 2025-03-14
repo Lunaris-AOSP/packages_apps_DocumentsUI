@@ -70,6 +70,7 @@ android_library {
 
     srcs: [
         "common/**/*.java",
+        "common/**/*.kt",
         "unit/**/*.java",
         "unit/**/*.kt",
     ],
@@ -94,6 +95,7 @@ android_library {
 
     srcs: [
         "common/**/*.java",
+        "common/**/*.kt",
         "functional/**/*.java",
         "functional/**/*.kt",
         "unit/**/*.java",
