@@ -293,8 +293,8 @@ final class GridDocumentHolder extends DocumentHolder {
             }
         }
 
-        if (mBullet != null && (mDetails.getVisibility() == View.GONE
-                || mDate.getText().isEmpty())) {
+        if (mBullet != null && (mDetails.getText() == null || mDetails.getText().length() == 0
+                || mDate.getText() == null || mDate.getText().length() == 0)) {
             // There is no need for the bullet separating the details and date.
             mBullet.setVisibility(View.GONE);
         }
