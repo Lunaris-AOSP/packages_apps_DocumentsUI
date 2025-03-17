@@ -26,6 +26,7 @@
     <dimen name="icon_size">40dp</dimen>
     <dimen name="button_touch_size">48dp</dimen>
     <dimen name="root_icon_size">24dp</dimen>
+    <dimen name="thumbnail_clip_corner_radius">6dp</dimen>
     <!-- TODO(b/379776735): remove this block after use_material3 flag is launched. -->
     <dimen name="root_icon_margin">0dp</dimen>
     <dimen name="root_spacer_padding">0dp</dimen>

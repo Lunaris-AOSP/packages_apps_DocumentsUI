@@ -41,6 +41,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.documentsui.ConfigStore;
 import com.android.documentsui.DocumentsApplication;
+import com.android.documentsui.IconUtils;
 import com.android.documentsui.R;
 import com.android.documentsui.base.DocumentInfo;
 import com.android.documentsui.base.Shared;
@@ -111,6 +112,13 @@ final class GridDocumentHolder extends DocumentHolder {
         mIconThumb = (ImageView) itemView.findViewById(R.id.icon_thumb);
         mIconBadge = (ImageView) itemView.findViewById(R.id.icon_profile_badge);
         mPreviewIcon = itemView.findViewById(R.id.preview_icon);
+
+        if (isUseMaterial3FlagEnabled()) {
+            int clipCornerRadius = context.getResources()
+                    .getDimensionPixelSize(R.dimen.thumbnail_clip_corner_radius);
+            IconUtils.applyThumbnailClipOutline(
+                    mIconThumb, mThumbnailStrokeWidth, clipCornerRadius);
+        }
 
         mIconHelper = iconHelper;
 
