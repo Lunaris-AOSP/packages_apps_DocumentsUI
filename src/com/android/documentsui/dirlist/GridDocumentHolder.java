@@ -95,7 +95,7 @@ final class GridDocumentHolder extends DocumentHolder {
             mIconCheck = null;
             mThumbnailStrokeWidth =
                     context.getResources()
-                            .getDimensionPixelSize(R.dimen.grid_item_thumbnail_border_width);
+                            .getDimensionPixelSize(R.dimen.thumbnail_border_width);
         } else {
             mBullet = null;
             mIconWrapper = null;
