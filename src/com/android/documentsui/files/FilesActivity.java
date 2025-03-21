@@ -164,6 +164,7 @@ public class FilesActivity extends BaseActivity implements AbstractActionHandler
                         clipper,
                         DocumentsApplication.getClipStore(this),
                         DocumentsApplication.getDragAndDropManager(this),
+                        mPeekViewManager,
                         mInjector);
 
         mInjector.searchManager = mSearchManager;
